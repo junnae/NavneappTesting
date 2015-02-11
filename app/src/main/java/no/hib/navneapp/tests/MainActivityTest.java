@@ -101,7 +101,7 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
 
         getInstrumentation().waitForIdleSync();
 
-        ImageView imgView = (ImageView) getActivity().findViewById(android.R.id.custom);
+        //ImageView imgView = (ImageView) getActivity().findViewById(android.R.id.custom);
         //Drawable draw = imgView.getDrawable();
 
        // assertNotNull(imgView);

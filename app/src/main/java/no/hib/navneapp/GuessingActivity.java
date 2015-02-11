@@ -25,6 +25,7 @@ public class GuessingActivity extends Activity {
     Button second;
     Button third;
     boolean clicked = false;
+    int imageId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class GuessingActivity extends Activity {
         ImageView img = (ImageView) findViewById(R.id.imageView);
         int sel = persons[randomInt].getPicture();
         img.setImageResource(sel);
+        imageId = sel;
 
          first = (Button)findViewById(R.id.button);
          second = (Button)findViewById(R.id.button2);
@@ -46,6 +48,10 @@ public class GuessingActivity extends Activity {
 
     }
 
+
+    public int getImageId(){
+        return imageId;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
