@@ -5,6 +5,7 @@ import android.test.ActivityUnitTestCase;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 
@@ -67,6 +68,21 @@ public class ImageModeActivityTest extends ActivityUnitTestCase<ImageModeActivit
 // for this assignment, I don't think the standard tools in android studio are the best). We could have gone for another solution, where it would
 //display a textview instead, but alas we did not and we leave this test empty
     public void testToast(){
+
+
+    }
+
+
+    public void testNextActivityWasLaunchedWithIntent() {
+        startActivity(mLaunchIntent, null, null);
+        final Button launchNextButton =
+                (Button) getActivity()
+                        .findViewById(R.id.buttonProgress2);
+        launchNextButton.performClick();
+
+        final Intent launchIntent = getStartedActivityIntent();
+        assertNotNull("Intent was null", launchIntent);
+        assertTrue(isFinishCalled());
 
 
     }

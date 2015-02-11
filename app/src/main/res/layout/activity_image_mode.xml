@@ -1,11 +1,25 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/gridview"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="476dp"
     android:columnWidth="400dp"
     android:numColumns="2"
     android:verticalSpacing="10dp"
     android:horizontalSpacing="10dp"
     android:stretchMode="columnWidth"
     android:gravity="center"
-    />
+    android:paddingTop="20dp" />
+
+<Button
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="New Button"
+android:id="@+id/buttonProgress2"
+android:onClick="onClick"/>
+
+    </LinearLayout>

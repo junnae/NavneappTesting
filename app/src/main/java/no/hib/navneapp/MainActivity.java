@@ -2,7 +2,7 @@ package no.hib.navneapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
+//import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,6 +39,10 @@ public class MainActivity extends Activity {
     Person k = new Person("Karl", R.drawable.tumblr_3);
     Person[]  persons = { a, s, k};
     ImageView img;
+    Button next;
+    boolean clicked = false;
+    int imageId;
+    int sel;
 
 
 
@@ -46,6 +51,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         img = (ImageView)findViewById(R.id.custom);
+        next = (Button) findViewById(R.id.buttonProgress);
+        next.setText("Next level");
 
         ArrayAdapter<Person> itemAdapter = new ArrayAdapter<Person>(this, android.R.layout.simple_list_item_1, persons);
         ListView listView = ( ListView ) findViewById(R.id.listview);
@@ -58,7 +65,8 @@ public class MainActivity extends Activity {
                                     long id) {
 
                 Person o = (Person) parent.getAdapter().getItem(position);
-                int sel = o.getPicture();
+                sel = o.getPicture();
+                imageId = sel;
 
                 img.setImageResource(sel);
                 img.setVisibility(View.VISIBLE);
@@ -72,6 +80,10 @@ public class MainActivity extends Activity {
 
     }
 
+
+    public int getImageId(){
+        return imageId;
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +111,21 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void onClick(View v) {
+
+        if (!clicked) {
+            if (v.getId() == R.id.buttonProgress) {
+                Intent intent = new Intent(this, ImageModeActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+
+        }
     }
 
 

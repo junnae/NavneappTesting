@@ -1,6 +1,7 @@
 package no.hib.navneapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ public class GuessingActivity extends Activity {
     Button third;
     boolean clicked = false;
     int imageId;
+    Button nextButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,9 @@ public class GuessingActivity extends Activity {
         int sel = persons[randomInt].getPicture();
         img.setImageResource(sel);
         imageId = sel;
+        nextButton = (Button) findViewById(R.id.buttonProgress3);
+        nextButton.setText("Restart");
+
 
          first = (Button)findViewById(R.id.button);
          second = (Button)findViewById(R.id.button2);
@@ -76,6 +81,7 @@ public class GuessingActivity extends Activity {
     }
 
     public void onClick(View v) {
+
 
         if (!clicked) {
 
@@ -126,5 +132,20 @@ public class GuessingActivity extends Activity {
             startActivity(getIntent());
         }
 
+    }
+
+
+    public void onClick2(View v) {
+
+        if (!clicked) {
+            if (v.getId() == R.id.buttonProgress3) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+
+        }
     }
 }

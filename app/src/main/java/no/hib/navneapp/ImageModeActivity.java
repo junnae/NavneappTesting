@@ -1,6 +1,7 @@
 package no.hib.navneapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -21,12 +23,17 @@ public class ImageModeActivity extends Activity {
     Person s = new Person("Simen", R.drawable.tumblr_2);
     Person k = new Person("Karl", R.drawable.tumblr_3);
     Person[]  persons = { a, s, k};
+    Button nextButton;
+    boolean clicked = false;
+
 
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_mode);
+        nextButton = (Button) findViewById(R.id.buttonProgress2);
+        nextButton.setText("Next level");
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
@@ -59,4 +66,21 @@ public class ImageModeActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void onClick(View v) {
+
+        if (!clicked) {
+            if (v.getId() == R.id.buttonProgress2) {
+                Intent intent = new Intent(this, GuessingActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+
+
+        }
+    }
+
 }

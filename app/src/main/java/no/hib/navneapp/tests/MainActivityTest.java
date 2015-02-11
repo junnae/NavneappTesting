@@ -41,11 +41,8 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
     View launchImage;
 
 
-
-
-
-    public MainActivityTest () {
-        super(MainActivity.class );
+    public MainActivityTest() {
+        super(MainActivity.class);
     }
 
 
@@ -59,19 +56,19 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
     }
 
 
-    public void testActivityLaunched(){
+    public void testActivityLaunched() {
         startActivity(mLaunchIntent, null, null);
         assertEquals(getActivity().getClass().getSimpleName(), "MainActivity");
 
     }
 
-    public void testNames () throws InterruptedException {
+    public void testNames() throws InterruptedException {
         startActivity(mLaunchIntent, null, null);
         getInstrumentation().waitForIdleSync();
         listView = (ListView) getActivity().findViewById(R.id.listview);
-        child0 =(TextView) listView.getAdapter().getView(0, null, null);
-        child1 =(TextView) listView.getAdapter().getView(1, null, null);
-        child2 =(TextView) listView.getAdapter().getView(2, null, null);
+        child0 = (TextView) listView.getAdapter().getView(0, null, null);
+        child1 = (TextView) listView.getAdapter().getView(1, null, null);
+        child2 = (TextView) listView.getAdapter().getView(2, null, null);
         String firstText = child0.getText().toString();
         String secondText = child1.getText().toString();
         String thirdText = child2.getText().toString();
@@ -80,34 +77,94 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
         assertEquals("Karl", thirdText);
 
 
+    }
+
+    // Let's click the first picture
+
+    public void clickFirstPicture() throws InterruptedException {
+
+        startActivity(mLaunchIntent, null, null);
+        getInstrumentation().waitForIdleSync();
+        listView = (ListView) getActivity().findViewById(R.id.listview);
+
+
+        assertTrue(listView.performItemClick(
+                listView.getAdapter().getView(0, null, null),
+                0,
+                listView.getAdapter().getItemId(0)
+        ));
+
+        getInstrumentation().waitForIdleSync();
+
+        Object O = getActivity().findViewById(R.id.custom);
+        Log.d("O: ", O.getClass().toString());
+        ImageView img = (ImageView) O;
+        int testInt = getActivity().getImageId();
+        Log.d("testInt: ", Integer.toString(testInt));
+
+         int picture = R.drawable.tumblr_1;
+        assertEquals (testInt, picture);
+
+
 
     }
 
+    //let's click the second picture
 
-    //Does not work at all for now
-    public void testMatch() throws InterruptedException {
+    public void testClickSecondPicture(){
+        startActivity(mLaunchIntent, null, null);
+        getInstrumentation().waitForIdleSync();
+        listView = (ListView) getActivity().findViewById(R.id.listview);
+
+
+        assertTrue(listView.performItemClick(
+                listView.getAdapter().getView(1, null, null),
+                1,
+                listView.getAdapter().getItemId(1)
+        ));
+
+        getInstrumentation().waitForIdleSync();
+
+        Object O = getActivity().findViewById(R.id.custom);
+        // Log.d("O: ", O.getClass().toString());
+        ImageView img = (ImageView) O;
+        int testInt = getActivity().getImageId();
+        Log.d("testInt: ", Integer.toString(testInt));
+
+        int picture = R.drawable.tumblr_2;
+        assertEquals (testInt, picture);
+
+
+
+    }
+
+    //let's click the third picture
+
+    public void testClickThirddPicture(){
         startActivity(mLaunchIntent, null, null);
         getInstrumentation().waitForIdleSync();
 
         listView = (ListView) getActivity().findViewById(R.id.listview);
 
-       // assertTrue(listView.getAdapter().getView(0, null, null).performClick());
-
-               assertTrue(listView.performItemClick(
-                listView.getAdapter().getView(0, null, null),
-                0,
-                listView.getAdapter().getItemId(0)
-        ) );
+        assertTrue(listView.performItemClick(
+                listView.getAdapter().getView(2, null, null),
+                2,
+                listView.getAdapter().getItemId(2)
+        ));
 
         getInstrumentation().waitForIdleSync();
 
-        //ImageView imgView = (ImageView) getActivity().findViewById(android.R.id.custom);
-        //Drawable draw = imgView.getDrawable();
+        Object O = getActivity().findViewById(R.id.custom);
+        // Log.d("O: ", O.getClass().toString());
+        ImageView img = (ImageView) O;
+        int testInt = getActivity().getImageId();
+        Log.d("testInt: ", Integer.toString(testInt));
 
-       // assertNotNull(imgView);
+        int picture = R.drawable.tumblr_3;
+        assertEquals (testInt, picture);
 
-       // int picture = R.drawable.tumblr_1;
-        //assertEquals (" "  +picture + " " + compare, compare, picture);
+
+
     }
 
 
@@ -126,6 +183,17 @@ public class MainActivityTest extends ActivityUnitTestCase<MainActivity> {
     }
 
 
+    public void testNextActivityWasLaunchedWithIntent() {
+        startActivity(mLaunchIntent, null, null);
+        final Button launchNextButton =
+                (Button) getActivity()
+                        .findViewById(R.id.buttonProgress);
+        launchNextButton.performClick();
+
+        final Intent launchIntent = getStartedActivityIntent();
+        assertNotNull("Intent was null", launchIntent);
+        assertTrue(isFinishCalled());
 
 
+    }
 }

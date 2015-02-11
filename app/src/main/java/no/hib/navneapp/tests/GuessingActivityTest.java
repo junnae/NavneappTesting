@@ -60,7 +60,7 @@ public class GuessingActivityTest extends ActivityUnitTestCase<GuessingActivity>
     }
 
 
-    public void testfunctionality() {
+    public void testFunctionality() {
         startActivity(mLaunchIntent, null, null);
         ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageView);
         int pic = getActivity().getImageId();
@@ -106,32 +106,56 @@ public class GuessingActivityTest extends ActivityUnitTestCase<GuessingActivity>
         }
 
 
-        //ok now let's find a wrong button and test it
 
 
-        //click a arbitrary button to progress
-        thirdbutton.performClick();
+    }
 
-        //lets restart these
 
-        pic = getActivity().getImageId();
+    public void testWrongClicked(){
 
-        if(pic == R.drawable.tumblr_1){
-            secondbutton.performClick();
-            assertEquals(secondbutton.getText().toString(), "Wrong..");
-        }
+        startActivity(mLaunchIntent, null, null);
+        ImageView imageview = (ImageView) getActivity().findViewById(R.id.imageView);
+        int pic = getActivity().getImageId();
 
-        else if (pic == R.drawable.tumblr_2){
+
+        //now we test pressing the wrong button
+        //could be put in it's own method and use setup but I can't run startActivity in setup anyway!
+
+        Button firstbutton = (Button) getActivity().findViewById(R.id.button);
+        Button secondbutton =(Button) getActivity().findViewById(R.id.button2);
+        Button thirdbutton = (Button) getActivity().findViewById(R.id.button3);
+
+        if(pic == R.drawable.tumblr_2){
             firstbutton.performClick();
             assertEquals(firstbutton.getText().toString(), "Wrong..");
         }
-   else{}
+
+        else
+        {
+
+            secondbutton.performClick();
+            assertEquals(secondbutton.getText().toString(), "Wrong..");
+        }
 
 
 
 
     }
 
+
+    public void testNextActivityWasLaunchedWithIntent() {
+        startActivity(mLaunchIntent, null, null);
+        final Button launchNextButton =
+                (Button) getActivity()
+                        .findViewById(R.id.buttonProgress3);
+        launchNextButton.performClick();
+        getInstrumentation().waitForIdleSync();
+        final Intent launchIntent = getStartedActivityIntent();
+        assertNotNull("Intent was null", launchIntent);
+        assertTrue(isFinishCalled());
+
+
+    }
 
 
 }
