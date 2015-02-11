@@ -1,5 +1,6 @@
 package no.hib.navneapp;
 
+import android.app.Activity;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -11,7 +12,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 
-public class ImageModeActivity extends ActionBarActivity {
+public class ImageModeActivity extends Activity {
 
 
 

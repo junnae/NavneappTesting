@@ -1,5 +1,6 @@
 package no.hib.navneapp;
 
+import android.app.Activity;
 import android.media.Image;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 import java.util.Random;
 
 
-public class GuessingActivity extends ActionBarActivity {
+public class GuessingActivity extends Activity {
 
 
     Person a = new Person("Aleksander", R.drawable.tumblr_1);
