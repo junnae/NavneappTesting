@@ -2,15 +2,10 @@ package no.hib.navneapp.tests;
 
 import android.content.Intent;
 import android.test.ActivityUnitTestCase;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.ImageView;
 
 import no.hib.navneapp.ImageModeActivity;
-import no.hib.navneapp.MainActivity;
 import no.hib.navneapp.R;
 
 /**

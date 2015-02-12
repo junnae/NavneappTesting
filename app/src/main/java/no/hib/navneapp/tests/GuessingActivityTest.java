@@ -3,12 +3,10 @@ package no.hib.navneapp.tests;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.test.ActivityUnitTestCase;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import no.hib.navneapp.GuessingActivity;
-import no.hib.navneapp.ImageModeActivity;
 import no.hib.navneapp.R;
 
 /**
@@ -79,6 +77,7 @@ public class GuessingActivityTest extends ActivityUnitTestCase<GuessingActivity>
             ok = true;
             third = true;
     }
+        else{}
 
         assertTrue( ok);
 
@@ -104,6 +103,7 @@ public class GuessingActivityTest extends ActivityUnitTestCase<GuessingActivity>
             thirdbutton.performClick();
             assertEquals(thirdbutton.getText().toString(), "Correct!");
         }
+        else{}
 
 
 

@@ -1,24 +1,14 @@
 package no.hib.navneapp.tests;
 
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.Instrumentation;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.test.ActivityUnitTestCase;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import no.hib.navneapp.ImageModeActivity;
 import no.hib.navneapp.MainActivity;
 import no.hib.navneapp.Person;
 import no.hib.navneapp.R;
